@@ -4,29 +4,32 @@ class SimonSquare extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clicked: false,
+      backgroundStyle: {background: this.props.color || "white"},
     };
     this.click = this.click.bind(this);
   }
 
   click() {
     // Set clicked to true and set timer to revert it after 0.5s
-    this.setState({clicked: true});
-    setTimeout(this.setState({clicked: false}), 500);
+    const newBackgroundStyle = Object.assign({}, this.state.backgroundStyle);
+    const oldBackgroundStyle = Object.assign({}, this.state.backgroundStyle);
+    
+    newBackgroundStyle['box-shadow'] = `0px 0px 24px 10px rgba(${this.props.rgba})`;
+    this.setState({backgroundStyle: newBackgroundStyle});
+    
+    setTimeout(this.setState({backgroundStyle: oldBackgroundStyle}), 5000);
 
     // Pass the color of this square up to the game component
-    // this.props.clicked(this.props.color);
+    this.props.clicked(this.props.color);
   }
 
   render() {
-    const { color } = this.props;
-    const {clicked} = this.state;
-    const backgroundStyle = {background: color || "white"};
-
+    const {backgroundStyle} = this.state;
+    
     return (
       <div className="simon-square-area">
         <div
-          className={`simon-square ${clicked ? 'active' : ''}`}
+          className="simon-square"
           style={backgroundStyle}
           onClick={() => this.click()}
         >
