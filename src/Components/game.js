@@ -28,6 +28,7 @@ class Game extends Component {
     this.setState({answer: generateAnswer(this.state.level)});
   }
 
+  // Validates color clicked against answer
   storeClick(color) {
     if (this.state.answer[this.state.squareClickCounter] !== color) {
       this.setState({resultVerification: false});
@@ -60,6 +61,7 @@ class Game extends Component {
 
         <div className="upper-game-body">
           <DisplaySquare className="display" answer={answer} level={level} />
+
           <div className="simon-square-grid">
             <SimonSquare
               className="red"
@@ -88,6 +90,7 @@ class Game extends Component {
           </div>
         </div>
 
+        {/* Displays outcome of game in text depending on results */}
         <p className="outcome-text">
           {answer.length === squareClickCounter && gameEnded
             ? resultVerification

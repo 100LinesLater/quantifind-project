@@ -35,6 +35,7 @@ class DisplaySquare extends Component {
       <div className="display-square-area">
         <div 
           className="display-square"
+          // Display color or white depending on interval
           style={{
             background: `${!finishedSequence ?
               (counter % 2 === 0 ?
