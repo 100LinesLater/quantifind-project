@@ -54,8 +54,7 @@ class Game extends Component {
         <div className="game-header">
           <h2>Simon Says</h2>
           <button className="start-button" onClick={() => this.startGame()}>
-            <p>Start</p>
-            {/* Play Icon */}
+            Start
           </button>
         </div>
 
